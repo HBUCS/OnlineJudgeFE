@@ -5,7 +5,7 @@
     </div>
     <div slot="extra">
       <Button v-if="listVisible" type="info" @click="init" :loading="btnLoading">{{$t('m.Refresh')}}</Button>
-      <Button v-else type="ghost" icon="ios-undo" @click="goBack">{{$t('m.Back')}}</Button>
+      <Button v-else type="info" ghost icon="ios-undo" @click="goBack">{{$t('m.Back')}}</Button>
     </div>
 
     <transition-group name="announcement-animate" mode="in-out">

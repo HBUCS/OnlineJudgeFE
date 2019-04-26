@@ -1,9 +1,11 @@
 <template>
   <div id="header">
     <Menu theme="light" mode="horizontal" @on-select="handleRoute" :active-name="activeMenu" class="oj-menu">
-      <div class="logo"><span>{{website.website_name}}</span></div>
+      <div class="logo">
+        <span>{{website.website_name}}</span>
+      </div>
       <Menu-item name="/">
-        <Icon type="home"></Icon>
+        <Icon type="ios-home"/>
         {{$t('m.Home')}}
       </Menu-item>
       <Menu-item name="/problems">
@@ -11,16 +13,16 @@
         {{$t('m.NavProblems')}}
       </Menu-item>
       <Menu-item name="/contests">
-        <Icon type="trophy"></Icon>
+        <Icon type="ios-trophy"/>
         {{$t('m.Contests')}}
       </Menu-item>
       <Menu-item name="/status">
-        <Icon type="ios-pulse-strong"></Icon>
+        <Icon type="ios-pulse"></Icon>
         {{$t('m.NavStatus')}}
       </Menu-item>
       <Submenu name="rank">
         <template slot="title">
-          <Icon type="podium"></Icon>
+          <Icon type="ios-podium"></Icon>
           {{$t('m.Rank')}}
         </template>
         <Menu-item name="/acm-rank">
@@ -32,7 +34,7 @@
       </Submenu>
       <Submenu name="about">
         <template slot="title">
-          <Icon type="information-circled"></Icon>
+          <Icon type="ios-information-circle"/>
           {{$t('m.About')}}
         </template>
         <Menu-item name="/about">
@@ -44,23 +46,25 @@
       </Submenu>
       <template v-if="!isAuthenticated">
         <div class="btn-menu">
-          <Button type="ghost"
+          <Button @click="handleBtnClick('login')"
                   ref="loginBtn"
                   shape="circle"
-                  @click="handleBtnClick('login')">{{$t('m.Login')}}
+                  ghost
+                  type="primary">{{$t('m.Login')}}
           </Button>
           <Button v-if="website.allow_register"
-                  type="ghost"
+                  ghost
                   shape="circle"
                   @click="handleBtnClick('register')"
-                  style="margin-left: 5px;">{{$t('m.Register')}}
+                  style="margin-left: 5px;"
+                  type="primary">{{$t('m.Register')}}
           </Button>
         </div>
       </template>
       <template v-else>
         <Dropdown class="drop-menu" @on-click="handleRoute" placement="bottom" trigger="click">
           <Button type="text" class="drop-menu-title">{{ user.username }}
-            <Icon type="arrow-down-b"></Icon>
+            <Icon type="ios-arrow-down"/>
           </Button>
           <Dropdown-menu slot="list">
             <Dropdown-item name="/user-home">{{$t('m.MyHome')}}</Dropdown-item>
@@ -81,7 +85,7 @@
 </template>
 
 <script>
-  import { mapGetters, mapActions } from 'vuex'
+  import { mapActions, mapGetters } from 'vuex'
   import login from '@oj/views/user/Login'
   import register from '@oj/views/user/Register'
 

@@ -1,8 +1,18 @@
 <template>
   <div>
+    <Alert
+      @click.native="$router.push({name: 'test-paper', params: {contestID: $route.params.contestID}})"
+      show-icon
+      v-if="testPaperVisible">
+      Objective Questions
+      <Icon slot="icon" type="ios-bulb-outline"></Icon>
+      <template slot="desc">
+        This exam contains an objective test paper.
+      </template>
+    </Alert>
     <Panel>
       <div slot="title">{{$t('m.Problems_List')}}</div>
-      <Table v-if="contestRuleType == 'ACM' || OIContestRealTimePermission"
+      <Table v-if="contestRuleType === 'ACM' || OIContestRealTimePermission"
              :columns="ACMTableColumns"
              :data="problems"
              @on-row-click="goContestProblem"
@@ -17,8 +27,8 @@
 </template>
 
 <script>
-  import {mapState, mapGetters} from 'vuex'
-  import {ProblemMixin} from '@oj/components/mixins'
+  import { mapGetters, mapState } from 'vuex'
+  import { ProblemMixin } from '@oj/components/mixins'
 
   export default {
     name: 'ContestProblemList',
@@ -89,7 +99,7 @@
       ...mapState({
         problems: state => state.contest.contestProblems
       }),
-      ...mapGetters(['isAuthenticated', 'contestRuleType', 'OIContestRealTimePermission'])
+      ...mapGetters(['isAuthenticated', 'contestRuleType', 'OIContestRealTimePermission', 'testPaperVisible'])
     }
   }
 </script>

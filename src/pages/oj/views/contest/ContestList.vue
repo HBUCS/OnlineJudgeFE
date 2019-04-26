@@ -8,7 +8,7 @@
           <li>
             <Dropdown @on-click="onRuleChange">
               <span>{{query.rule_type === '' ? 'Rule' : query.rule_type}}
-                <Icon type="arrow-down-b"></Icon>
+                <Icon type="ios-arrow-down"/>
               </span>
               <Dropdown-menu slot="list">
                 <Dropdown-item name="">All</Dropdown-item>
@@ -20,7 +20,7 @@
           <li>
             <Dropdown @on-click="onStatusChange">
               <span>{{query.status === '' ? 'Status' : CONTEST_STATUS_REVERSE[query.status].name}}
-                <Icon type="arrow-down-b"></Icon>
+                <Icon type="ios-arrow-down"/>
               </span>
               <Dropdown-menu slot="list">
                 <Dropdown-item name="">All</Dropdown-item>
@@ -32,7 +32,7 @@
           </li>
           <li>
             <Input id="keyword" @on-enter="changeRoute" @on-click="changeRoute" v-model="query.keyword"
-                   icon="ios-search-strong" placeholder="Keyword"/>
+                   icon="ios-search" placeholder="Keyword"/>
           </li>
         </ul>
       </div>

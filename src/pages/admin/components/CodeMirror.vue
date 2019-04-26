@@ -1,10 +1,19 @@
 <template>
-  <codemirror v-model="currentValue" :options="options" ref="editor"></codemirror>
+  <codemirror
+    :options="options"
+    @blur="$emit('blur')"
+    @input="onCodeChange"
+    ref="myCm"
+    v-model="currentValue"></codemirror>
 </template>
+
 <script>
-  import { codemirror } from 'vue-codemirror-lite'
+  import { codemirror } from 'vue-codemirror'
+  import 'codemirror/lib/codemirror.css'
   import 'codemirror/mode/clike/clike.js'
   import 'codemirror/mode/python/python.js'
+  import 'codemirror/mode/javascript/javascript.js'
+  import 'codemirror/mode/lua/lua.js'
   import 'codemirror/theme/solarized.css'
 
   export default {
@@ -21,7 +30,7 @@
           line: true,
           foldGutter: true,
           gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
-          autofocus: true
+          autofocus: false
         }
       }
     },
@@ -38,9 +47,19 @@
         default: 'text/x-csrc'
       }
     },
+    computed: {
+      codemirror () {
+        return this.$refs.myCm.codemirror
+      }
+    },
     mounted () {
       this.currentValue = this.value
-      this.$refs.editor.editor.setOption('mode', this.mode)
+      this.codemirror.setOption('mode', this.mode)
+    },
+    methods: {
+      onCodeChange (newCode) {
+        this.$emit('input', newCode)
+      }
     },
     watch: {
       'value' (val) {
@@ -48,14 +67,8 @@
           this.currentValue = val
         }
       },
-      'currentValue' (newVal, oldVal) {
-        if (newVal !== oldVal) {
-          this.$emit('change', newVal)
-          this.$emit('input', newVal)
-        }
-      },
       'mode' (newVal) {
-        this.$refs.editor.editor.setOption('mode', newVal)
+        this.codemirror.setOption('mode', newVal)
       }
     }
   }

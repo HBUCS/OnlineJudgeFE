@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 // 引入 view 组件
 import { Announcement, Conf, Contest, ContestList, Home, JudgeServer, Login,
   Problem, ProblemList, User, PruneTestCase, Dashboard, ProblemImportOrExport } from './views'
+import Question from './views/problem/Question'
 Vue.use(VueRouter)
 
 export default new VueRouter({
@@ -63,6 +64,16 @@ export default new VueRouter({
           path: '/problem/edit/:problemId',
           name: 'edit-problem',
           component: Problem
+        },
+        {
+          path: '/question/create',
+          name: 'create-question',
+          component: Question
+        },
+        {
+          path: '/question/edit/:problemId',
+          name: 'edit-question',
+          component: Question
         },
         {
           path: '/problem/batch_ops',

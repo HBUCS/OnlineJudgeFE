@@ -8,7 +8,7 @@
             <li>
               <Dropdown @on-click="handleResultChange">
                 <span>{{status}}
-                  <Icon type="arrow-down-b"></Icon>
+                  <Icon type="ios-arrow-down"/>
                 </span>
                 <Dropdown-menu slot="list">
                   <Dropdown-item name="">All</Dropdown-item>
@@ -18,8 +18,6 @@
                 </Dropdown-menu>
               </Dropdown>
             </li>
-
-
             <li>
               <i-switch size="large" v-model="formFilter.myself" @on-change="handleQueryChange">
                 <span slot="open">Mine</span>
@@ -179,7 +177,8 @@
         problemID: '',
         routeName: '',
         JUDGE_STATUS: '',
-        rejudge_column: false
+        rejudge_column: false,
+        similarity_column: false
       }
     },
     mounted () {
@@ -225,6 +224,7 @@
             v.loading = false
           }
           this.adjustRejudgeColumn()
+          this.adjustSimilarityColumn()
           this.loadingTable = false
           this.submissions = data.results
           this.total = data.total
@@ -273,6 +273,20 @@
         this.columns.push(judgeColumn)
         this.rejudge_column = true
       },
+      adjustSimilarityColumn () {
+        if (!this.similarityColumnVisible || this.similarity_column) {
+          return
+        }
+        const similarityColumn = {
+          title: 'Similarity',
+          align: 'center',
+          render: (h, {row}) => {
+            return h('span', row.statistic_info.similarity ? `${row.statistic_info.similarity}%` : '-')
+          }
+        }
+        this.columns.push(similarityColumn)
+        this.similarity_column = true
+      },
       handleResultChange (status) {
         this.page = 1
         this.formFilter.result = status
@@ -294,7 +308,7 @@
       }
     },
     computed: {
-      ...mapGetters(['isAuthenticated', 'user']),
+      ...mapGetters(['isAuthenticated', 'user', 'similarityVisible']),
       title () {
         if (!this.contestID) {
           return 'Status'
@@ -309,6 +323,9 @@
       },
       rejudgeColumnVisible () {
         return !this.contestID && this.user.admin_type === USER_TYPE.SUPER_ADMIN
+      },
+      similarityColumnVisible () {
+        return this.contestID && this.similarityVisible
       }
     },
     watch: {

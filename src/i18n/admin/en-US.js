@@ -89,6 +89,10 @@ export const m = {
   Score: 'Score',
   Hint: 'Hint',
   Source: 'Source',
+  Tag: 'Tag',
+  Summary: 'Summary',
+  FormSchema: 'Form Schema',
+  GradeScript: 'Grade Script',
   // Contest.vue
   ContestTitle: 'Title',
   ContestDescription: 'Description',
@@ -100,11 +104,16 @@ export const m = {
   Contest_Status: 'Status',
   Allowed_IP_Ranges: 'Allowed IP Ranges',
   CIDR_Network: 'CIDR Network',
+  SimilarityCheck: 'Similarity Check',
   // Dashboard.vue
   Last_Login: 'Last Login',
   System_Overview: 'System Overview',
   DashBoardJudge_Server: 'Judge Server',
   HTTPS_Status: 'HTTPS Status',
   Force_HTTPS: 'Force HTTPS',
-  CDN_HOST: 'CDN HOST'
+  CDN_HOST: 'CDN HOST',
+  // ProblemList.vue
+  ProgrammingQuestion: 'Programming Question',
+  FormQuestion: 'Form Question',
+  Number: 'Number'
 }

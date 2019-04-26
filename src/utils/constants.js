@@ -119,6 +119,42 @@ export const STORAGE_KEY = {
   languages: 'languages'
 }
 
+export const QUESTION_TYPE = {
+  CODING: 'Coding',
+  FORM: 'Form'
+}
+
+export const GRADE_STATUS_REVERSE = {
+  '0': {
+    name: 'No Submit',
+    color: 'default'
+  },
+  '1': {
+    name: 'Submitted',
+    color: 'blue'
+  },
+  '2': {
+    name: 'Grading',
+    color: 'blue'
+  },
+  '3': {
+    name: 'Done',
+    color: 'green'
+  },
+  '-1': {
+    name: 'Error',
+    color: 'red'
+  }
+}
+
+export const GRADE_STATUS = {
+  NO_SUBMITTED: 0,
+  SUBMITTED: 1,
+  GRADING: 2,
+  GRADED: 3,
+  ERROR: -1
+}
+
 export function buildProblemCodeKey (problemID, contestID = null) {
   if (contestID) {
     return `${STORAGE_KEY.PROBLEM_CODE}_${contestID}_${problemID}`

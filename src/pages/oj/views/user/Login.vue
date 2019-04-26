@@ -8,12 +8,12 @@
       </FormItem>
       <FormItem prop="password">
         <Input type="password" v-model="formLogin.password" :placeholder="$t('m.LoginPassword')" size="large" @on-enter="handleLogin">
-        <Icon type="ios-locked-outline" slot="prepend"></Icon>
+        <Icon type="ios-lock-outline" slot="prepend"></Icon>
         </Input>
       </FormItem>
       <FormItem prop="tfa_code" v-if="tfaRequired">
         <Input v-model="formLogin.tfa_code" :placeholder="$t('m.TFA_Code')">
-        <Icon type="ios-lightbulb-outline" slot="prepend"></Icon>
+        <Icon type="ios-flash-outline" slot="prepend"></Icon>
         </Input>
       </FormItem>
     </Form>

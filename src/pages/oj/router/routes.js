@@ -76,6 +76,12 @@ export default [
     component: Contest.ContestList
   },
   {
+    name: 'test-paper',
+    path: '/contest/:contestID/test_paper',
+    meta: {title: 'Test Paper'},
+    component: Contest.TestPaper
+  },
+  {
     name: 'contest-details',
     path: '/contest/:contestID/',
     component: Contest.ContestDetails,
@@ -110,6 +116,11 @@ export default [
         name: 'acm-helper',
         path: 'helper',
         component: Contest.ACMContestHelper
+      },
+      {
+        name: 'test-paper-submission-list',
+        path: 'transcript',
+        component: Contest.TestPaperSubmissionList
       }
     ]
   },

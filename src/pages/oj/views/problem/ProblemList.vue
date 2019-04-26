@@ -8,7 +8,7 @@
           <li>
             <Dropdown @on-click="filterByDifficulty">
               <span>{{query.difficulty === '' ? 'Difficulty' : query.difficulty}}
-                <Icon type="arrow-down-b"></Icon>
+                <Icon type="ios-arrow-down"/>
               </span>
               <Dropdown-menu slot="list">
                 <Dropdown-item name="">All</Dropdown-item>
@@ -29,7 +29,7 @@
                    @on-enter="filterByKeyword"
                    @on-click="filterByKeyword"
                    placeholder="keyword"
-                   icon="ios-search-strong"/>
+                   icon="ios-search"/>
           </li>
           <li>
             <Button type="info" @click="onReset">
@@ -55,7 +55,8 @@
       <Button v-for="tag in tagList"
               :key="tag.name"
               @click="filterByTag(tag.name)"
-              type="ghost"
+              ghost
+              type="info"
               :disabled="query.tag === tag.name"
               shape="circle"
               class="tag-btn">{{tag.name}}

@@ -198,6 +198,28 @@ export default {
       data
     })
   },
+  getTestPaperSubmission (params) {
+    return ajax('test_paper_submission', 'get', {
+      params
+    })
+  },
+  getTestPaperSubmissionList (params) {
+    return ajax('test_paper_submission', 'get', {
+      params
+    })
+  },
+  submitAnswer (data) {
+    return ajax('test_paper_submission', 'post', {
+      data
+    })
+  },
+  regrade (id) {
+    return ajax('test_paper_submission', 'put', {
+      params: {
+        id
+      }
+    })
+  },
   getSubmissionList (offset, limit, params) {
     params.limit = limit
     params.offset = offset
@@ -214,6 +236,46 @@ export default {
   },
   getSubmission (id) {
     return ajax('submission', 'get', {
+      params: {
+        id
+      }
+    })
+  },
+  getTestPaper (contestID) {
+    return ajax('contest/question', 'get', {
+      params: {
+        contest_id: contestID
+      }
+    })
+  },
+  getComment (submissionID) {
+    return ajax('comment', 'get', {
+      params: {
+        submission_id: submissionID
+      }
+    })
+  },
+  createComment (submissionID, line, message) {
+    const data = {
+      submission_id: submissionID,
+      line,
+      message
+    }
+    return ajax('comment', 'post', {
+      data
+    })
+  },
+  editComment (id, message) {
+    const data = {
+      id,
+      message
+    }
+    return ajax('comment', 'put', {
+      data
+    })
+  },
+  deleteComment (id) {
+    return ajax('comment', 'delete', {
       params: {
         id
       }

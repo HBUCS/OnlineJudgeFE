@@ -90,7 +90,7 @@
                 <Input v-model="captchaCode" class="captcha-code"/>
               </div>
             </template>
-            <Button type="warning" icon="edit" :loading="submitting" @click="submitCode"
+            <Button :loading="submitting" @click="submitCode" icon="ios-create" type="warning"
                     :disabled="problemSubmitDisabled || submitted"
                     class="fl-right">
               <span v-if="submitting">Submitting</span>
@@ -105,29 +105,24 @@
       <VerticalMenu @on-click="handleRoute">
         <template v-if="this.contestID">
           <VerticalMenu-item :route="{name: 'contest-problem-list', params: {contestID: contestID}}">
-            <Icon type="ios-photos"></Icon>
             Problems
           </VerticalMenu-item>
 
           <VerticalMenu-item :route="{name: 'contest-announcement-list', params: {contestID: contestID}}">
-            <Icon type="chatbubble-working"></Icon>
             Announcements
           </VerticalMenu-item>
         </template>
 
         <VerticalMenu-item v-if="!this.contestID || OIContestRealTimePermission" :route="submissionRoute">
-          <Icon type="navicon-round"></Icon>
           Submissions
         </VerticalMenu-item>
 
         <template v-if="this.contestID">
           <VerticalMenu-item v-if="!this.contestID || OIContestRealTimePermission"
                              :route="{name: 'contest-rank', params: {contestID: contestID}}">
-            <Icon type="stats-bars"></Icon>
             Rankings
           </VerticalMenu-item>
           <VerticalMenu-item :route="{name: 'contest-details', params: {contestID: contestID}}">
-            <Icon type="home"></Icon>
             View Contest
           </VerticalMenu-item>
         </template>
@@ -135,7 +130,7 @@
 
       <Card id="info">
         <div slot="title" class="header">
-          <Icon type="information-circled"></Icon>
+          <Icon type="ios-information-circle"/>
           <span class="card-title">{{$t('m.Information')}}</span>
         </div>
         <ul>
@@ -180,7 +175,7 @@
         <div slot="title">
           <Icon type="ios-analytics"></Icon>
           <span class="card-title">Statistic</span>
-          <Button type="ghost" size="small" id="detail" @click="graphVisible = !graphVisible">Details</Button>
+          <Button @click="graphVisible = !graphVisible" ghost id="detail" size="small" type="info">Details</Button>
         </div>
         <div class="echarts">
           <ECharts :options="pie"></ECharts>
@@ -193,21 +188,21 @@
         <ECharts :options="largePie" :initOptions="largePieInitOpts"></ECharts>
       </div>
       <div slot="footer">
-        <Button type="ghost" @click="graphVisible=false">Close</Button>
+        <Button @click="graphVisible=false" ghost type="info">Close</Button>
       </div>
     </Modal>
   </div>
 </template>
 
 <script>
-  import {mapGetters, mapActions} from 'vuex'
-  import {types} from '../../../../store'
+  import { mapActions, mapGetters } from 'vuex'
+  import { types } from '../../../../store'
   import CodeMirror from '@oj/components/CodeMirror.vue'
   import storage from '@/utils/storage'
-  import {FormMixin} from '@oj/components/mixins'
-  import {JUDGE_STATUS, CONTEST_STATUS, buildProblemCodeKey} from '@/utils/constants'
+  import { FormMixin } from '@oj/components/mixins'
+  import { buildProblemCodeKey, CONTEST_STATUS, JUDGE_STATUS } from '@/utils/constants'
   import api from '@oj/api'
-  import {pie, largePie} from './chartData'
+  import { largePie, pie } from './chartData'
 
   // 只显示这些状态的图形占用
   const filtedStatus = ['-1', '-2', '0', '1', '2', '3', '4', '8']

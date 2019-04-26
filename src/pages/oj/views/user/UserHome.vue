@@ -31,7 +31,7 @@
         <div id="problems">
           <div v-if="problems.length">{{$t('m.List_Solved_Problems')}}
             <Poptip v-if="refreshVisible" trigger="hover" placement="right-start">
-              <Icon type="ios-help-outline"></Icon>
+              <Icon type="ios-help-circle-outline" />
               <div slot="content">
                 <p>If you find the following problem id does not exist,<br> try to click the button.</p>
                 <Button type="info" @click="freshProblemDisplayID">regenerate</Button>
@@ -41,19 +41,19 @@
           <p v-else>{{$t('m.UserHomeIntro')}}</p>
           <div class="btns">
             <div class="problem-btn" v-for="problemID of problems" :key="problemID">
-              <Button type="ghost" @click="goProblem(problemID)">{{problemID}}</Button>
+              <Button type="info" ghost @click="goProblem(problemID)">{{problemID}}</Button>
             </div>
           </div>
         </div>
         <div id="icons">
           <a :href="profile.github">
-            <Icon type="social-github-outline" size="30"></Icon>
+            <Icon type="logo-github" size="30"></Icon>
           </a>
           <a :href="'mailto:'+ profile.user.email">
-            <Icon class="icon" type="ios-email-outline" size="30"></Icon>
+            <Icon class="icon" type="ios-mail-outline" size="30"></Icon>
           </a>
           <a :href="profile.blog">
-            <Icon class="icon" type="ios-world-outline" size="30"></Icon>
+            <Icon class="icon" type="ios-globe-outline" size="30"></Icon>
           </a>
         </div>
       </div>

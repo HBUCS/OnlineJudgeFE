@@ -23,7 +23,7 @@
     </Col>
 
     <Col :span="20">
-      <Highlight :code="submission.code" :language="submission.language" :border-color="status.color"></Highlight>
+      <CodeDetail :code="submission.code" :language="submission.language"></CodeDetail>
     </Col>
     <Col v-if="submission.can_unshare" :span="20">
       <div id="share-btn">
@@ -45,7 +45,7 @@
   import api from '@oj/api'
   import {JUDGE_STATUS} from '@/utils/constants'
   import utils from '@/utils/utils'
-  import Highlight from '@/pages/oj/components/Highlight'
+  import CodeDetail from '@/pages/oj/components/CodeDetail'
 
   const baseColumn = [
     {
@@ -102,7 +102,7 @@
   export default {
     name: 'submissionDetails',
     components: {
-      Highlight
+      CodeDetail
     },
     data () {
       return {

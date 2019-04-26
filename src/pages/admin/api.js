@@ -235,6 +235,58 @@ export default {
       }
     })
   },
+  getQuestion (id) {
+    return ajax('admin/question', 'get', {
+      params: {
+        id
+      }
+    })
+  },
+  getQuestionList (params) {
+    return ajax('admin/question', 'get', {
+      params
+    })
+  },
+  createQuestion (data) {
+    return ajax('admin/question', 'post', {
+      data
+    })
+  },
+  editQuestion (data) {
+    return ajax('admin/question', 'put', {
+      data
+    })
+  },
+  deleteQuestion (id) {
+    return ajax('admin/question', 'delete', {
+      params: {
+        id
+      }
+    })
+  },
+  getContestQuestionList (params) {
+    params = utils.filterEmptyValue(params)
+    return ajax('admin/contest_question', 'get', {
+      params
+    })
+  },
+  addContestQuestion (data) {
+    return ajax('admin/contest_question', 'post', {
+      data
+    })
+  },
+  deleteContestQuestion (id) {
+    return ajax('admin/contest_question', 'delete', {
+      params: {
+        id
+      }
+    })
+  },
+  extractQuestion (data) {
+    return ajax('admin/extract_question', 'post', {
+      data
+    })
+  },
   getProblemList (params) {
     params = utils.filterEmptyValue(params)
     return ajax('admin/problem', 'get', {

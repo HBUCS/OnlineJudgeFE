@@ -10,11 +10,11 @@
         </Select>
 
         <Tooltip content="Reset to default code definition" placement="top" style="margin-left: 10px">
-          <Button icon="refresh" @click="onResetClick"></Button>
+          <Button @click="onResetClick" icon="md-refresh"></Button>
         </Tooltip>
 
         <Tooltip content="Upload file" placement="top" style="margin-left: 10px">
-          <Button icon="upload" @click="onUploadFile"></Button>
+          <Button @click="onUploadFile" icon="md-cloud-upload"></Button>
         </Tooltip>
 
         <input type="file" id="file-uploader" style="display: none" @change="onUploadFileDone">
@@ -38,19 +38,15 @@
 <script>
   import utils from '@/utils/utils'
   import { codemirror } from 'vue-codemirror-lite'
-
   // theme
   import 'codemirror/theme/monokai.css'
   import 'codemirror/theme/solarized.css'
   import 'codemirror/theme/material.css'
-
   // mode
   import 'codemirror/mode/clike/clike.js'
   import 'codemirror/mode/python/python.js'
-
   // active-line.js
   import 'codemirror/addon/selection/active-line.js'
-
   // foldGutter
   import 'codemirror/addon/fold/foldgutter.css'
   import 'codemirror/addon/fold/foldgutter.js'

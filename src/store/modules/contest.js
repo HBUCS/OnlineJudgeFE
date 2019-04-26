@@ -1,7 +1,7 @@
 import moment from 'moment'
 import types from '../types'
 import api from '@oj/api'
-import { CONTEST_STATUS, USER_TYPE, CONTEST_TYPE } from '@/utils/constants'
+import { CONTEST_STATUS, CONTEST_TYPE, USER_TYPE } from '@/utils/constants'
 
 const state = {
   now: moment(),
@@ -45,6 +45,12 @@ const getters = {
   isContestAdmin: (state, getters, _, rootGetters) => {
     return rootGetters.isAuthenticated &&
       (state.contest.created_by.id === rootGetters.user.id || rootGetters.user.admin_type === USER_TYPE.SUPER_ADMIN)
+  },
+  testPaperVisible: (state) => {
+    return state.contest.test_paper_visible || false
+  },
+  similarityVisible: (state, getters) => {
+    return state.contest.similarity_check && getters.isContestAdmin
   },
   contestMenuDisabled: (state, getters) => {
     if (getters.isContestAdmin) return false

@@ -89,6 +89,7 @@ export const m = {
   Score: '分数',
   Hint: '提示',
   Source: '来源',
+  Tag: 'Tag',
   // Contest.vue
   ContestTitle: '标题',
   ContestDescription: '描述',
@@ -106,5 +107,11 @@ export const m = {
   DashBoardJudge_Server: '判题服务器',
   HTTPS_Status: 'HTTPS 状态',
   Force_HTTPS: '强制 HTTPS',
-  CDN_HOST: 'CDN HOST'
+  CDN_HOST: 'CDN HOST',
+  // ProblemList.vue
+  ProgrammingProblem: '编程题',
+  MultipleChoiceQuestion: '选择题',
+  FillBlankQuestion: '填空题',
+  QuestionType: '题目类型',
+  Number: '数目'
 }

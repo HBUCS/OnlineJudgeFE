@@ -76,7 +76,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="8">
-            <el-form-item label="Tag" :error="error.tags" required>
+            <el-form-item :label="$t('m.Tag')" :error="error.tags" required>
               <span class="tags">
                 <el-tag
                   v-for="tag in problem.tags"
